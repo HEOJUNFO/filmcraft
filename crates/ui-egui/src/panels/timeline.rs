@@ -2863,7 +2863,7 @@ fn interact(app: &mut FilmcraftApp, ui: &mut egui::Ui, seq: &Sequence, layout: &
     resp.context_menu(|ui| {
         // a long menu scrolls instead of running off the bottom of the screen (#2852)
         let max_height = (ui.ctx().content_rect().height() - 16.0).max(0.0);
-        egui::ScrollArea::vertical().id_salt("clip-menu-scroll").max_height(max_height).show(ui, |ui| {
+        egui::ScrollArea::vertical().id_salt("clip-menu-scroll").max_height(max_height).min_scrolled_height(max_height).show(ui, |ui| {
             ui.set_min_width(220.0);
             if let Some(marker) = ctx.data(|d| d.get_temp::<Option<MarkerId>>(marker_menu_id)).flatten() {
                 marker_menu(app, &ctx, ui, marker);
